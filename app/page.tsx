@@ -1,65 +1,337 @@
-import Image from "next/image";
+// app/page.tsx
+import { Phone, MessageCircle, CheckCircle2 } from "lucide-react";
 
-export default function Home() {
+const PHONE = "0505368360"; // לשנות למספר של אבא
+const WHATSAPP = `https://wa.me/972${PHONE.replace(/^0/, "")}?text=${encodeURIComponent(
+  "היי, אשמח להצעת מחיר לדלתות פנים"
+)}`;
+
+export default function HomePage() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+<main className="min-h-screen bg-gradient-to-b from-zinc-50 via-white to-zinc-50 text-zinc-900">
+      {/* Top Bar */}
+      <header className="sticky top-0 z-50 border-b border-zinc-200 bg-white/80 backdrop-blur">
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
+          <div className="font-semibold tracking-tight">
+            דלתות פנים - מכירה | התקנה | שיפוץ
+          </div>
+
+          <div className="hidden gap-2 sm:flex">
+            <a
+              href={`tel:${PHONE}`}
+              className="inline-flex-row-reverse items-center gap-2 rounded-xl border border-zinc-200 bg-white px-4 py-2 text-sm font-medium shadow-sm hover:bg-zinc-100"
+            >
+              <Phone className="h-4 w-4" />
+              התקשר
+            </a>
+            <a
+              href={WHATSAPP}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 rounded-xl bg-zinc-900 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-zinc-800"
+            >
+              <MessageCircle className="h-4 w-4" />
+              וואטסאפ
+            </a>
+          </div>
+        </div>
+      </header>
+
+      {/* Hero */}
+      <section className="mx-auto grid max-w-6xl gap-10 px-4 py-10 md:grid-cols-2 md:py-16">
+        <div className="flex flex-col justify-center">
+
+        <div className="mt-4 flex flex-wrap gap-2">
+          {["אחריות מלאה", "עבודה נקייה", "התאמה אישית", "זמינות גבוהה"].map((t) => (
+            <span
+              key={t}
+              className="rounded-full border border-zinc-200 bg-white px-3 py-1 text-xs font-semibold text-zinc-700"
+            >
+              {t}
+            </span>
+          ))}
+        </div>
+
+          <h1 className="text-3xl font-bold leading-tight tracking-tight sm:text-4xl">
+            דלתות פנים איכותיות לבית
+            <span className="block text-zinc-600">
+              מכירה, התקנה ושיפוץ – בהתאמה אישית
+            </span>
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
+
+          <p className="mt-4 text-base leading-relaxed text-zinc-700">
+            מחליפים / משפצים דלתות פנים מכל הסוגים, עם גימור מדויק, עמידות לאורך
+            זמן ושירות אישי עד הבית.
+          </p>
+
+          <div className="mt-6 flex flex-col gap-3 sm:flex-row-revers">
             <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+              href={`tel:${PHONE}`}
+              className="inline-flex items-center justify-center gap-2 rounded-2xl bg-zinc-900 px-5 py-3 font-semibold text-white shadow-sm hover:bg-zinc-800"
             >
-              Templates
-            </a>{" "}
-            or the{" "}
+              <Phone className="h-5 w-5" />
+              התקשרו להצעת מחיר
+            </a>
             <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+              href={WHATSAPP}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center justify-center gap-2 rounded-2xl border border-zinc-200 bg-white px-5 py-3 font-semibold shadow-sm hover:bg-zinc-100"
             >
-              Learning
-            </a>{" "}
-            center.
+              <MessageCircle className="h-5 w-5" />
+              שלחו הודעה בוואטסאפ
+            </a>
+          </div>
+
+          {/* Benefits */}
+          <div className="mt-8 grid gap-3 sm:grid-cols-2">
+            {[
+              "התקנה מקצועית ומהירה",
+              "שיפוץ דלתות קיימות",
+              "מחירים הוגנים",
+              "שירות אמין ונעים",
+            ].map((t) => (
+              <div
+                key={t}
+                className="flex items-center gap-2 rounded-2xl border border-zinc-200 bg-white p-4 shadow-sm"
+              >
+                <CheckCircle2 className="h-5 w-5" />
+                <span className="text-sm font-medium">{t}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Image / Visual */}
+        <div className="relative overflow-hidden rounded-3xl border border-zinc-200 bg-white shadow-sm">
+          <div className="absolute inset-0 bg-gradient-to-br from-zinc-100 to-white" />
+          <div className="relative p-6 sm:p-8">
+            <div className="rounded-2xl border border-zinc-200 bg-white p-5">
+              <p className="text-sm font-semibold text-zinc-900">
+                מה כולל השירות?
+              </p>
+              <ul className="mt-3 space-y-2 text-sm text-zinc-700">
+                <li>• פירוק והתקנה נקייה</li>
+                <li>• תיקונים, כיוון צירים, החלפת מנעולים</li>
+                <li>• גימור מושלם וקבלת אחריות</li>
+              </ul>
+            </div>
+
+            <div className="mt-4 grid grid-cols-2 gap-4">
+              <div className="rounded-2xl border border-zinc-200 bg-white p-4">
+                <p className="text-xs text-zinc-500">זמן ממוצע</p>
+                <p className="text-lg font-bold">24–72 שעות</p>
+                <p className="text-xs text-zinc-500">לתיאום והגעה</p>
+              </div>
+              <div className="rounded-2xl border border-zinc-200 bg-white p-4">
+                <p className="text-xs text-zinc-500">אחריות</p>
+                <p className="text-lg font-bold">מלאה</p>
+                <p className="text-xs text-zinc-500">על התקנה ועבודה</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Sticky WhatsApp on Mobile */}
+      <div className="fixed bottom-4 left-4 right-4 z-50 sm:hidden">
+        <a
+          href={WHATSAPP}
+          target="_blank"
+          rel="noreferrer"
+          className="flex items-center justify-center gap-2 rounded-2xl bg-zinc-900 px-5 py-4 font-semibold text-white shadow-lg"
+        >
+          <MessageCircle className="h-5 w-5" />
+          שלחו וואטסאפ להצעת מחיר
+        </a>
+      </div>
+
+      {/* Doors Types Section */}
+<section className="bg-white py-16">
+  <div className="mx-auto max-w-6xl px-4">
+    <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">
+      סוגי דלתות פנים
+    </h2>
+    <p className="mt-2 text-zinc-600">
+      מגוון רחב של דלתות בעיצובים שונים – בהתאמה מלאה לבית שלכם.
+    </p>
+
+    <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      {[
+        {
+          title: "דלתות לבנות מודרניות",
+          img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c",
+        },
+        {
+          title: "דלתות בצבע עץ",
+          img: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6",
+        },
+        {
+          title: "דלתות שקטות לחדר השינה",
+          img: "https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf",
+        },
+        {
+          title:" דלתות יד 2 או סוג ב'",
+          img: "https://images.unsplash.com/photo-1588854337119-1c0c78f55d6a",
+        },
+      ].map((door) => (
+        <div
+          key={door.title}
+          className="group overflow-hidden rounded-3xl border border-zinc-200 bg-white shadow-sm transition hover:shadow-md"
+        >
+          <div className="aspect-square overflow-hidden">
+            <img
+              src={door.img}
+              alt={door.title}
+              className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+            />
+          </div>
+          <div className="p-4">
+            <h3 className="font-semibold">{door.title}</h3>
+            <p className="mt-2 text-sm text-zinc-600">
+              התקנה מקצועית וגימור מושלם.
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+{/* Value Proposition: Surplus / Grade B */}
+<section className="bg-white py-16">
+  <div className="mx-auto max-w-6xl px-4">
+    <div className="rounded-3xl border border-zinc-100 bg-zinc-50 p-6 shadow-[0_8px_30px_rgba(0,0,0,0.06)] sm:p-10">
+      <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">
+        דלתות עודפים / סוג ב׳ — מחירים נוחים, התקנה מקצועית
+      </h2>
+
+      <p className="mt-4 leading-relaxed text-zinc-700">
+        מדובר בדלתות במחירי הזדמנות: לעיתים עודפים/סוף סדרה, ולעיתים פגמים קוסמטיים
+        קלים (כמו שריטה קטנה/גוון) — לא משהו שפוגע בשימוש. אתם מקבלים ייעוץ אמיתי,
+        התאמה לפי מידה וסגנון, והתקנה נקייה עם אחריות על העבודה.
+      </p>
+
+      <div className="mt-8 grid gap-4 sm:grid-cols-3">
+        <div className="rounded-2xl border border-zinc-200 bg-white p-5">
+          <p className="text-sm font-semibold">חוסכים כסף</p>
+          <p className="mt-2 text-sm text-zinc-700">
+            מחירים נוחים משמעותית לעומת דלת חדשה מהמדף.
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        <div className="rounded-2xl border border-zinc-200 bg-white p-5">
+          <p className="text-sm font-semibold">שקיפות מלאה</p>
+          <p className="mt-2 text-sm text-zinc-700">
+            מסבירים מראש אם יש פגם קוסמטי ומה המשמעות בפועל.
+          </p>
         </div>
-      </main>
+
+        <div className="rounded-2xl border border-zinc-200 bg-white p-5">
+          <p className="text-sm font-semibold">אחריות על העבודה</p>
+          <p className="mt-2 text-sm text-zinc-700">
+            התקנה מקצועית, כיוונים וגימור — עד שהכול עובד חלק.
+          </p>
+        </div>
+      </div>
     </div>
+  </div>
+</section>
+
+
+{/* FAQ */}
+<section className="bg-white pb-16">
+  <div className="mx-auto max-w-6xl px-4">
+    <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">שאלות נפוצות</h2>
+
+    <div className="mt-8 grid gap-4 md:grid-cols-2">
+      {[
+        {
+          q: "מה זה אומר דלתות סוג ב׳?",
+          a: "בדרך כלל עודפים/סוף סדרה, או פגמים קוסמטיים קלים שנגרמו עקב הובלה או טעות במפעל. אנו מסבירים מראש בדיוק מה מצב הדלת.",
+        },
+        {
+          q: "איך בוחרים דלת אם אין תמונות?",
+          a: "שולחים הודעה/שיחה קצרה עם מידות וסגנון. מציעים אפשרויות מהמלאי הקיים ומעדכנים בשקיפות מלאה.",
+        },
+        {
+          q: "הפגמים משפיעים על השימוש?",
+          a: " לא. מדובר בפגמים קוסמטיים קטנים. ההתקנה והפעולה של הדלת נבדקות ומכוונות",
+        },
+        {
+          q: "יש אחריות?",
+          a: "כן — אחריות על ההתקנה והעבודה. בנוסף מבצעים כיוונים וגימור עד לתוצאה תקינה וחלקה.",
+        },
+        {
+          q: "האם הפגמים נראים לעין?",
+          a: "מדובר בפגמים קוסמטיים מינוריים בלבד – לרוב שריטה קטנה או קילוף צבע שטופל באופן מקצועי. כל דלת נבדקת ומוכנה להתקנה ברמת גימור גבוהה, וברוב המקרים אין הבדל נראה לעין. כך ניתן ליהנות מדלת איכותית במחיר נוח במיוחד.",
+        },
+        {
+        q: "האם יש דלתות חדשות?",
+        a: "כן. בנוסף לדלתות עודפים/סוג ב׳, אנו מציעים גם דלתות חדשות לגמרי לפי זמינות ומלאי. נשמח להתאים לכם פתרון בהתאם לתקציב ולסגנון הבית.",
+        },
+
+
+      ].map((item) => (
+        <div
+          key={item.q}
+          className="rounded-3xl border border-zinc-100 bg-zinc-50 p-6 shadow-[0_8px_30px_rgba(0,0,0,0.06)]"
+        >
+          <p className="font-semibold">{item.q}</p>
+          <p className="mt-2 text-sm leading-relaxed text-zinc-700">{item.a}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+
+
+      {/* Service Area (SEO) */}
+<section className="bg-zinc-100 py-16">
+  <div className="mx-auto max-w-6xl px-4">
+    <div className="rounded-3xl border border-zinc-200 bg-white p-6 shadow-sm sm:p-10">
+      <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">
+        שירות דלתות פנים במרכז הארץ
+      </h2>
+
+      <p className="mt-4 text-zinc-700 leading-relaxed">
+        אנו מספקים שירות מכירה, התקנה ושיפוץ דלתות פנים בסטנדרט גבוה,
+        עם עבודה נקייה, דיוק ואחריות מלאה – ללקוחות פרטיים וקבלנים.
+      </p>
+
+      <div className="mt-8 grid gap-4 sm:grid-cols-2">
+        <div className="rounded-2xl border border-zinc-200 bg-zinc-50 p-5">
+          <h3 className="font-semibold">אזורי שירות נפוצים</h3>
+          <p className="mt-2 text-sm text-zinc-700">
+            ראשון לציון • חולון • בת ים • תל אביב • גבעתיים • רמת גן •
+            פתח תקווה • הרצליה • רעננה • כפר סבא • רחובות • נס ציונה
+          </p>
+          <p className="mt-3 text-xs text-zinc-500">
+            לא בטוחים אם אנחנו מגיעים אליכם? שלחו הודעה ונאשר זמינות.
+          </p>
+        </div>
+
+        <div className="rounded-2xl border border-zinc-200 bg-zinc-50 p-5">
+          <h3 className="font-semibold">מה תקבלו אצלנו</h3>
+          <ul className="mt-3 space-y-2 text-sm text-zinc-700">
+            <li>• ייעוץ והתאמה לפי הבית והתקציב</li>
+            <li>• התקנה מקצועית וגימור מדויק</li>
+            <li>• שיפוץ/כיוון דלתות קיימות</li>
+            <li>• זמינות גבוהה ושירות אישי</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+          
+      {/* footer */}
+      <footer className="border-t border-zinc-200 bg-white">
+        <div className="mx-auto max-w-6xl px-4 py-6 text-sm text-zinc-600">
+          © {new Date().getFullYear()} דלתות פנים — כל הזכויות שמורות
+        </div>
+      </footer>
+    </main>
   );
 }
