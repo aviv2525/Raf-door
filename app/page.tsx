@@ -1,6 +1,7 @@
 // app/page.tsx
 import { Phone, MessageCircle, CheckCircle2 } from "lucide-react";
 import QuoteRequestForm from "@/components/QuoteRequestForm";
+import LeadForm from "@/components/LeadForm";
 
 
 const PHONE = "0505368360"; // לשנות למספר של אבא
@@ -329,11 +330,12 @@ export default function HomePage() {
 
 <QuoteRequestForm />
 
+
           
       {/* footer */}
       <footer className="border-t border-zinc-200 bg-white">
         <div className="mx-auto max-w-6xl px-4 py-6 text-sm text-zinc-600">
-          © {new Date().getFullYear()} דלתות פנים — כל הזכויות שמורות
+          © {new Date().getFullYear()} Aviv.m דלתות פנים — כל הזכויות שמורות
         </div>
       </footer>
     </main>
