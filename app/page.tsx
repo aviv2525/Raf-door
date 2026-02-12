@@ -1,5 +1,7 @@
 // app/page.tsx
 import { Phone, MessageCircle, CheckCircle2 } from "lucide-react";
+import QuoteRequestForm from "@/components/QuoteRequestForm";
+
 
 const PHONE = "0505368360"; // לשנות למספר של אבא
 const WHATSAPP = `https://wa.me/972${PHONE.replace(/^0/, "")}?text=${encodeURIComponent(
@@ -324,6 +326,8 @@ export default function HomePage() {
     </div>
   </div>
 </section>
+
+<QuoteRequestForm />
 
           
       {/* footer */}
