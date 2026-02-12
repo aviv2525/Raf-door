@@ -8,25 +8,25 @@ type Option<T extends string | number> = {
   hint?: string;
 };
 
-type Props<T extends string | number> = {
-  label: string;
-  value: T | undefined;
-  options: Option<T>[];
-  onChange: (v: T) => void;
-  columns?: 2 | 3 | 4;
-  disabled?: boolean;
-};
-
 export function OptionGroup<T extends string | number>({
   label,
   value,
   options,
   onChange,
-  columns = 2,
+  columns = 4,
   disabled,
-}: Props<T>) {
+}: {
+  label: string;
+  value: T | undefined;
+  options: Option<T>[];
+  onChange: (v: T) => void;
+  columns?: 2 | 3 | 4 | 5;
+  disabled?: boolean;
+}) {
   const gridCols =
-    columns === 4 ? "grid-cols-4" : columns === 3 ? "grid-cols-3" : "grid-cols-2";
+    columns === 5 ? "grid-cols-5" :
+    columns === 4 ? "grid-cols-4" :
+    columns === 3 ? "grid-cols-3" : "grid-cols-2";
 
   return (
     <div className="space-y-2">

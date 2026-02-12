@@ -163,7 +163,7 @@ export default function LeadForm() {
               label="מידת משקוף"
               value={form.frameSize}
               onChange={(v) => update("frameSize", v)}
-              columns={5}
+              columns={4}
               options={[
                 { value: 60, label: "60" },
                 { value: 70, label: "70" },
