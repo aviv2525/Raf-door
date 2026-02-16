@@ -3,6 +3,7 @@ import { Phone, MessageCircle, CheckCircle2 } from "lucide-react";
 import QuoteRequestForm from "@/components/QuoteRequestForm";
 import LeadForm from "@/components/LeadForm";
 import DoorGallery from "@/components/DoorGallery";
+import Fade from "@/components/Fade";
 
 
 const PHONE = "0505368360"; 
@@ -17,7 +18,7 @@ export default function HomePage() {
       <header className="sticky top-0 z-50 border-b border-zinc-200 bg-white/80 backdrop-blur">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
           <div className="font-semibold tracking-tight">
-            דלתות פנים - מכירה | התקנה | שיפוץ
+            רפי דלתות פנים - מכירה | התקנה | שיפוץ
           </div>
 
           <div className="hidden gap-2 sm:flex">
@@ -62,17 +63,25 @@ export default function HomePage() {
           ))}
         </div>
 
-          <h1 className="text-3xl font-bold leading-tight tracking-tight sm:text-4xl">
-            דלתות פנים איכותיות לבית
-            <span className="block text-zinc-600">
-              מכירה, התקנה ושיפוץ – בהתאמה אישית
-            </span>
-          </h1>
+          <div className="max-w-2xl">
 
-          <p className="mt-4 text-base leading-relaxed text-zinc-700">
-            מחליפים / משפצים דלתות פנים מכל הסוגים, עם גימור מדויק, עמידות לאורך
-            זמן ושירות אישי עד הבית.
-          </p>
+            <h1 className="text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl">
+              דלתות פנים
+              <span className="mt-2 block bg-gradient-to-r from-zinc-800 to-zinc-500 bg-clip-text text-transparent">
+                מכירה, התקנה ושיפוץ בהתאמה אישית
+              </span>
+            </h1>
+
+            <div className="mt-6 h-1 w-16 rounded-full bg-zinc-900" />
+
+            <p className="mt-6 text-lg leading-relaxed text-zinc-600">
+              מחליפים ומשפצים דלתות פנים מכל הסוגים,
+              עם גימור מדויק, עמידות לאורך זמן
+              ושירות אישי עד הבית.
+            </p>
+
+          </div>
+
 
           <div className="mt-6 flex flex-col gap-3 sm:flex-row-revers">
             <a
@@ -115,6 +124,7 @@ export default function HomePage() {
             ))}
           </div>
         </div>
+        
 {/*
   <div className="relative overflow-hidden rounded-3xl border border-zinc-200 bg-white shadow-sm">
           <div className="absolute inset-0 bg-gradient-to-br from-zinc-100 to-white" />
@@ -212,42 +222,45 @@ export default function HomePage() {
     <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">שאלות נפוצות</h2>
 
     <div className="mt-8 grid gap-4 md:grid-cols-2">
-      {[
-        {
-          q: "מה זה אומר דלתות סוג ב׳?",
-          a: "בדרך כלל עודפים/סוף סדרה, או פגמים קוסמטיים קלים שנגרמו עקב הובלה או טעות במפעל. אנו מסבירים מראש בדיוק מה מצב הדלת.",
-        },
-        {
-          q: "איך בוחרים דלת אם אין תמונות?",
-          a: "שולחים הודעה/שיחה קצרה עם מידות וסגנון. מציעים אפשרויות מהמלאי הקיים ומעדכנים בשקיפות מלאה.",
-        },
-        {
-          q: "הפגמים משפיעים על השימוש?",
-          a: " לא. מדובר בפגמים קוסמטיים קטנים. ההתקנה והפעולה של הדלת נבדקות ומכוונות",
-        },
-        {
-          q: "יש אחריות?",
-          a: "כן — אחריות על ההתקנה והעבודה. בנוסף מבצעים כיוונים וגימור עד לתוצאה תקינה וחלקה.",
-        },
-        {
-          q: "האם הפגמים נראים לעין?",
-          a: "מדובר בפגמים קוסמטיים מינוריים בלבד – לרוב שריטה קטנה או קילוף צבע שטופל באופן מקצועי. כל דלת נבדקת ומוכנה להתקנה ברמת גימור גבוהה, וברוב המקרים אין הבדל נראה לעין. כך ניתן ליהנות מדלת איכותית במחיר נוח במיוחד.",
-        },
-        {
-        q: "האם יש דלתות חדשות?",
-        a: "כן. בנוסף לדלתות עודפים/סוג ב׳, אנו מציעים גם דלתות חדשות לגמרי לפי זמינות ומלאי. נשמח להתאים לכם פתרון בהתאם לתקציב ולסגנון הבית.",
-        },
-
-
-      ].map((item) => (
-        <div
-          key={item.q}
-          className="rounded-3xl border border-zinc-100 bg-zinc-50 p-6 shadow-[0_8px_30px_rgba(0,0,0,0.06)]"
-        >
-          <p className="font-semibold">{item.q}</p>
-          <p className="mt-2 text-sm leading-relaxed text-zinc-700">{item.a}</p>
-        </div>
-      ))}
+  {[
+  {
+    q: "מה זה אומר דלתות סוג ב׳?",
+    a: "בדרך כלל עודפים/סוף סדרה, או פגמים קוסמטיים קלים שנגרמו עקב הובלה או טעות במפעל. אנו מסבירים מראש בדיוק מה מצב הדלת.",
+  },
+  {
+    q: "איך בוחרים דלת אם אין תמונות?",
+    a: "שולחים הודעה/שיחה קצרה עם מידות וסגנון. מציעים אפשרויות מהמלאי הקיים ומעדכנים בשקיפות מלאה.",
+  },
+  {
+    q: "הפגמים משפיעים על השימוש?",
+    a: "לא. מדובר בפגמים קוסמטיים קטנים. ההתקנה והפעולה של הדלת נבדקות ומכוונות",
+  },
+  {
+    q: "יש אחריות?",
+    a: "כן — אחריות על ההתקנה והעבודה. בנוסף מבצעים כיוונים וגימור עד לתוצאה תקינה וחלקה.",
+  },
+  {
+    q: "האם הפגמים נראים לעין?",
+    a: "מדובר בפגמים קוסמטיים מינוריים בלבד – לרוב שריטה קטנה או קילוף צבע שטופל באופן מקצועי. כל דלת נבדקת ומוכנה להתקנה ברמת גימור גבוהה, וברוב המקרים אין הבדל נראה לעין. כך ניתן ליהנות מדלת איכותית במחיר נוח במיוחד.",
+  },
+  {
+    q: "האם יש דלתות חדשות?",
+    a: "כן. בנוסף לדלתות עודפים/סוג ב׳, אנו מציעים גם דלתות חדשות לגמרי לפי זמינות ומלאי. נשמח להתאים לכם פתרון בהתאם לתקציב ולסגנון הבית.",
+  },
+].map((item, idx) => (
+  <Fade
+    key={item.q}
+    direction={idx % 2 === 1 ? "right" : "left"}
+    delayMs={idx * 100}
+  >
+    <div className="rounded-3xl border border-zinc-100 bg-zinc-50 p-6 shadow-[0_8px_30px_rgba(0,0,0,0.06)]">
+      <p className="font-semibold">{item.q}</p>
+      <p className="mt-2 text-sm leading-relaxed text-zinc-700">
+        {item.a}
+      </p>
+    </div>
+  </Fade>
+))}
     </div>
   </div>
 </section>

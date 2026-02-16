@@ -29,8 +29,7 @@ export default function DoorTypesSection() {
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {doors.map((door) => (
               <div
-                key={door.title}>
-              
+                key={door.title}>              
                 <div className="aspect-square overflow-hidden">
                   <img
                     src={door.img}
@@ -44,16 +43,13 @@ export default function DoorTypesSection() {
                 </div>
                 <div className="p-4">
                   <h3 className="font-semibold">{door.title}</h3>
-                  <p className="mt-2 text-sm text-zinc-600">
-                    התקנה מקצועית וגימור מושלם.
-                  </p>
                 </div>
               </div>
             ))}
           </div>
         </div>
       </section>
-        </FadeIn>
+      </FadeIn>
 
       {openImg && (
         <div
