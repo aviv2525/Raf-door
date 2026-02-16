@@ -2,9 +2,10 @@
 import { Phone, MessageCircle, CheckCircle2 } from "lucide-react";
 import QuoteRequestForm from "@/components/QuoteRequestForm";
 import LeadForm from "@/components/LeadForm";
+import DoorGallery from "@/components/DoorGallery";
 
 
-const PHONE = "0505368360"; // לשנות למספר של אבא
+const PHONE = "0505368360"; 
 const WHATSAPP = `https://wa.me/972${PHONE.replace(/^0/, "")}?text=${encodeURIComponent(
   "היי, אשמח להצעת מחיר לדלתות פנים"
 )}`;
@@ -21,11 +22,17 @@ export default function HomePage() {
 
           <div className="hidden gap-2 sm:flex">
             <a
+              href="#quote-form"
+              className="inline-flex items-center justify-center gap-2 rounded-2xl bg-zinc-900 px-6 py-3 font-semibold text-white shadow-lg hover:bg-zinc-800"
+            >
+              לקבלת הצעת מחיר
+            </a>
+            <a
               href={`tel:${PHONE}`}
               className="inline-flex-row-reverse items-center gap-2 rounded-xl border border-zinc-200 bg-white px-4 py-2 text-sm font-medium shadow-sm hover:bg-zinc-100"
             >
               <Phone className="h-4 w-4" />
-              התקשר
+              
             </a>
             <a
               href={WHATSAPP}
@@ -42,7 +49,7 @@ export default function HomePage() {
 
       {/* Hero */}
       <section className="mx-auto grid max-w-6xl gap-10 px-4 py-10 md:grid-cols-2 md:py-16">
-        <div className="flex flex-col justify-center">
+<div className="rounded-3xl border border-zinc-100 bg-white/80 p-6 shadow-[0_8px_30px_rgba(0,0,0,0.06)] backdrop-blur sm:p-10">
 
         <div className="mt-4 flex flex-wrap gap-2">
           {["אחריות מלאה", "עבודה נקייה", "התאמה אישית", "זמינות גבוהה"].map((t) => (
@@ -69,12 +76,17 @@ export default function HomePage() {
 
           <div className="mt-6 flex flex-col gap-3 sm:flex-row-revers">
             <a
+              href="#quote-form"
+              className="inline-flex items-center justify-center gap-2 rounded-2xl bg-amber-700 px-5 py-3 font-semibold text-white shadow-sm hover:bg-amber-600"
+            >
+              לקבלת הצעת מחיר
+            </a>
+                        <a
               href={`tel:${PHONE}`}
               className="inline-flex items-center justify-center gap-2 rounded-2xl bg-zinc-900 px-5 py-3 font-semibold text-white shadow-sm hover:bg-zinc-800"
             >
               <Phone className="h-5 w-5" />
-              התקשרו להצעת מחיר
-            </a>
+           </a>
             <a
               href={WHATSAPP}
               target="_blank"
@@ -82,7 +94,6 @@ export default function HomePage() {
               className="inline-flex items-center justify-center gap-2 rounded-2xl border border-zinc-200 bg-white px-5 py-3 font-semibold shadow-sm hover:bg-zinc-100"
             >
               <MessageCircle className="h-5 w-5" />
-              שלחו הודעה בוואטסאפ
             </a>
           </div>
 
@@ -104,9 +115,8 @@ export default function HomePage() {
             ))}
           </div>
         </div>
-
-        {/* Image / Visual */}
-        <div className="relative overflow-hidden rounded-3xl border border-zinc-200 bg-white shadow-sm">
+{/*
+  <div className="relative overflow-hidden rounded-3xl border border-zinc-200 bg-white shadow-sm">
           <div className="absolute inset-0 bg-gradient-to-br from-zinc-100 to-white" />
           <div className="relative p-6 sm:p-8">
             <div className="rounded-2xl border border-zinc-200 bg-white p-5">
@@ -119,7 +129,7 @@ export default function HomePage() {
                 <li>• גימור מושלם וקבלת אחריות</li>
               </ul>
             </div>
-
+              
             <div className="mt-4 grid grid-cols-2 gap-4">
               <div className="rounded-2xl border border-zinc-200 bg-white p-4">
                 <p className="text-xs text-zinc-500">זמן ממוצע</p>
@@ -134,6 +144,8 @@ export default function HomePage() {
             </div>
           </div>
         </div>
+*/}
+      
       </section>
 
       {/* Sticky WhatsApp on Mobile */}
@@ -150,56 +162,8 @@ export default function HomePage() {
       </div>
 
       {/* Doors Types Section */}
-<section className="bg-white py-16">
-  <div className="mx-auto max-w-6xl px-4">
-    <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">
-      סוגי דלתות פנים
-    </h2>
-    <p className="mt-2 text-zinc-600">
-      מגוון רחב של דלתות בעיצובים שונים – בהתאמה מלאה לבית שלכם.
-    </p>
+<DoorGallery />
 
-    <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-      {[
-        {
-          title: "דלתות לבנות מודרניות",
-          img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c",
-        },
-        {
-          title: "דלתות בצבע עץ",
-          img: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6",
-        },
-        {
-          title: "דלתות שקטות לחדר השינה",
-          img: "https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf",
-        },
-        {
-          title:" דלתות יד 2 או סוג ב'",
-          img: "https://images.unsplash.com/photo-1588854337119-1c0c78f55d6a",
-        },
-      ].map((door) => (
-        <div
-          key={door.title}
-          className="group overflow-hidden rounded-3xl border border-zinc-200 bg-white shadow-sm transition hover:shadow-md"
-        >
-          <div className="aspect-square overflow-hidden">
-            <img
-              src={door.img}
-              alt={door.title}
-              className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
-            />
-          </div>
-          <div className="p-4">
-            <h3 className="font-semibold">{door.title}</h3>
-            <p className="mt-2 text-sm text-zinc-600">
-              התקנה מקצועית וגימור מושלם.
-            </p>
-          </div>
-        </div>
-      ))}
-    </div>
-  </div>
-</section>
 {/* Value Proposition: Surplus / Grade B */}
 <section className="bg-white py-16">
   <div className="mx-auto max-w-6xl px-4">
@@ -239,6 +203,7 @@ export default function HomePage() {
     </div>
   </div>
 </section>
+
 
 
 {/* FAQ */}

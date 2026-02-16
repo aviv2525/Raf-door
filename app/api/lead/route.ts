@@ -11,19 +11,20 @@ const emptyToUndefined = (v: unknown) => {
   return s.length ? s : undefined;
 };
 
-const LeadSchema = z
-  .object({
+
+
+
+const LeadSchema = z.object({
     // פרטי לקוח
     fullName: z.string().min(2, "שם קצר מדי"),
     phone: z.string().min(7, "טלפון קצר מדי"),
     city: z.string().min(2, "עיר חסרה"),
     streetAndNumber: z.string().min(2, "רחוב ומספר חסר"),
-
     doorsCount: z.string().optional(),
     message: z.string().optional(),
 
     // מפרט דלת (מהכפתורים)
-    doorCondition: z.enum(["B", "NEW"]),
+    doorCondition: z.enum(["B", "NEW", "GENERIC"]),
     withFrame: z.enum(["YES", "NO"]),
 
     frameSize: z
@@ -63,7 +64,7 @@ const LeadSchema = z
 
 function labelMaps() {
   return {
-    doorCondition: { B: "סוג ב׳", NEW: "חדש" } as const,
+    doorCondition: { B: "סוג ב׳", NEW: "חדש", GENERIC: "פנייה כללית" } as const,
     withFrame: { YES: "כולל משקוף", NO: "בלי משקוף" } as const,
     openingSide: { RIGHT: "ימין", LEFT: "שמאל" } as const,
     lockType: { MAGNETIC: "טריקה שקטה (מגנטי)", REGULAR_101: "מנעול רגיל (101 אלבא)" } as const,
@@ -118,29 +119,50 @@ export async function POST(req: Request) {
       frameThickness: lead.withFrame === "YES" ? lead.frameThickness : undefined,
     } as const;
 
-    // Files
-    const files = form.getAll("images").filter(Boolean) as File[];
-    const picked = files.slice(0, MAX_FILES);
+// Files
+const files = form.getAll("images") as File[];
 
-    const attachments: { filename: string; content: Buffer }[] = [];
+// נשאיר רק קבצים אמיתיים (לא ריקים)
+const validFiles = files.filter(
+  (file) =>
+    file &&
+    typeof file.arrayBuffer === "function" &&
+    file.size > 0
+);
 
-    for (const file of picked) {
-      if (!file || typeof file.arrayBuffer !== "function") continue;
+const picked = validFiles.slice(0, MAX_FILES);
 
-      if (!file.type.startsWith("image/")) {
-        return NextResponse.json({ error: "ניתן לצרף רק תמונות." }, { status: 400 });
-      }
+const attachments: { filename: string; content: Buffer }[] = [];
 
-      if (file.size > MAX_FILE_SIZE) {
-        return NextResponse.json({ error: "תמונה גדולה מדי. מומלץ עד 4MB לתמונה." }, { status: 400 });
-      }
+for (const file of picked) {
+  // בדיקת סוג קובץ
+  const isImage =
+    file.type?.startsWith("image/") ||
+    /\.(jpg|jpeg|png|webp)$/i.test(file.name || "");
 
-      const ab = await file.arrayBuffer();
-      attachments.push({
-        filename: file.name || `image-${attachments.length + 1}.jpg`,
-        content: Buffer.from(ab),
-      });
-    }
+  if (!isImage) {
+    return NextResponse.json(
+      { error: "ניתן לצרף רק תמונות." },
+      { status: 400 }
+    );
+  }
+
+  // בדיקת גודל
+  if (file.size > MAX_FILE_SIZE) {
+    return NextResponse.json(
+      { error: "תמונה גדולה מדי. מומלץ עד 4MB לתמונה." },
+      { status: 400 }
+    );
+  }
+
+  const ab = await file.arrayBuffer();
+
+  attachments.push({
+    filename: file.name || `image-${attachments.length + 1}.jpg`,
+    content: Buffer.from(ab),
+  });
+}
+
 
     const resend = new Resend(process.env.RESEND_API_KEY);
     const toEmail = process.env.LEADS_TO_EMAIL;

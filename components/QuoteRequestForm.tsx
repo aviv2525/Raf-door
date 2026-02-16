@@ -2,7 +2,9 @@
 
 import { useEffect, useState } from "react";
 
-type DoorCondition = "B" | "NEW";
+
+
+type DoorCondition = "B" | "NEW" | "GENERIC";
 type WithFrame = "YES" | "NO";
 type OpeningSide = "RIGHT" | "LEFT";
 type LockType = "MAGNETIC" | "REGULAR_101";
@@ -187,7 +189,7 @@ export default function QuoteRequestForm() {
   }
 
   return (
-    <section className="bg-white py-16">
+    <section id="quote-form" className="bg-white py-16">
       <div className="mx-auto max-w-6xl px-4">
         <div className="rounded-3xl border border-zinc-100 bg-zinc-50 p-6 shadow-[0_8px_30px_rgba(0,0,0,0.06)] sm:p-10">
           <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">
@@ -196,6 +198,7 @@ export default function QuoteRequestForm() {
           <p className="mt-2 text-zinc-600">
           השאירו פרטים ונחזור אליכם עם האפשרות הזולה ביותר בהקדם האפשרי!  
         </p>
+
 
           <form onSubmit={onSubmit} className="mt-8 grid gap-4 md:grid-cols-2">
             {/* --- פרטים בסיסיים --- */}
@@ -297,7 +300,7 @@ export default function QuoteRequestForm() {
                 </div>
               ) : (
                 <div className="rounded-2xl border border-zinc-200 bg-zinc-50 p-4 text-sm text-zinc-700">
-                  מנעול: <span className="font-semibold">רגיל (101 אלבא)</span> (נבחר אוטומטית ללא משקוף)
+                  מנעול: <span className="font-semibold">רגיל (101)</span> (נבחר אוטומטית ללא משקוף)
                 </div>
               )}
 
@@ -318,7 +321,7 @@ export default function QuoteRequestForm() {
                   onChange={setLockType}
                   options={[
                     { value: "MAGNETIC", label: "טריקה שקטה", sub: "מגנטי" },
-                    { value: "REGULAR_101", label: "מנעול רגיל", sub: "101 אלבא" },
+                    { value: "REGULAR_101", label: "מנעול סטנדרטי", sub: "101" },
                   ]}
                 />
               ) : null}
@@ -344,7 +347,7 @@ export default function QuoteRequestForm() {
                 ]}
               />
 
-              <ChoiceGroup<Brand>
+              {/*<ChoiceGroup<Brand>
                 label="חברה"
                 value={brand}
                 onChange={setBrand}
@@ -355,7 +358,7 @@ export default function QuoteRequestForm() {
                   { value: "OREN", label: "דלתות אורן" },
                   { value: "NO_PREFERENCE", label: "לא משנה" },
                 ]}
-              />
+              /> */}
 
               <ChoiceRow<DoorSize>
                 label="מידת דלת"
