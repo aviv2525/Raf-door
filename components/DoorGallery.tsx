@@ -1,5 +1,7 @@
 "use client";
 import { useState } from "react";
+import FadeIn from "@/components/FadeIn";
+
 
 export default function DoorTypesSection() {
   const [openImg, setOpenImg] = useState<string | null>(null);
@@ -14,6 +16,7 @@ export default function DoorTypesSection() {
 
   return (
     <>
+    <FadeIn>
       <section className="bg-zinc-400 py-16">
         <div className="mx-auto max-w-7xl px-4">
           <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">
@@ -26,9 +29,8 @@ export default function DoorTypesSection() {
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {doors.map((door) => (
               <div
-                key={door.title}
-                className="group overflow-hidden rounded-3xl border border-zinc-200 bg-white shadow-sm transition hover:shadow-md"
-              >
+                key={door.title}>
+              
                 <div className="aspect-square overflow-hidden">
                   <img
                     src={door.img}
@@ -51,6 +53,7 @@ export default function DoorTypesSection() {
           </div>
         </div>
       </section>
+        </FadeIn>
 
       {openImg && (
         <div
